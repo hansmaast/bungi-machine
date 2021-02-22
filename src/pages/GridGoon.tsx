@@ -1,7 +1,7 @@
 import * as Tone from 'tone';
 import { Flex } from "../style/box";
 import { Grid } from "../style/grid";
-import { TriggerPoint } from "./TriggerPoint";
+import { TriggerPoint } from "../components/TriggerPoint";
 
 export const multiplier = 4;
 const numbers = Array.from(Array(multiplier * multiplier).keys());

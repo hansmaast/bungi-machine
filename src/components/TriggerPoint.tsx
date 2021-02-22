@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as Tone from 'tone';
 import { GridItem } from "../style/gridItem";
-import { synth } from "./GridGoon";
+import { synth } from "../pages/GridGoon";
 
 export default function TriggerPoint({ note, octave }: { note: string; octave: string; }) {
     const [isTouched, setIsTouched] = useState<boolean>(false);
