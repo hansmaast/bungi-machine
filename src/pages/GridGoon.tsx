@@ -1,4 +1,4 @@
-import { Flex } from '../style/box';
+import { Flex } from '../style/flex';
 import { Grid } from '../style/grid';
 import TriggerPoint from '../components/TriggerPoint';
 import { bebopLocrian, numbers } from '../constants';

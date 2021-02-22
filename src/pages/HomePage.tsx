@@ -1,4 +1,4 @@
-import { Flex } from '../style/box';
+import { Flex } from '../style/flex';
 import { StyledLink } from '../style/styledLink';
 
 export default function HomePage() {
