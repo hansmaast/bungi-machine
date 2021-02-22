@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import * as Tone from 'tone';
 import { GridItem } from '../style/gridItem';
-import { synth } from '../constants';
+
+const synth = new Tone.Synth({
+  envelope: {
+    attack: 0.01,
+    release: 0.2,
+    sustain: 0.5,
+  },
+}).toDestination();
 
 export default function TriggerPoint({ note, octave }: { note: string; octave: string; }) {
   const [isTouched, setIsTouched] = useState<boolean>(false);
-
   // Use preventDefault() inside touch event handlers,
   // so the default mouse-emulation handling doesn’t occur.
   const handleTouchStart = (e: any) => {
