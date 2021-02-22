@@ -6,22 +6,28 @@ import HomePage from './pages/HomePage';
 import RythmPage from './pages/RythmPage';
 import { AppContainer } from './style/appContainer';
 
+function Routes() {
+  return (
+    <Switch>
+      <Route exact path="/">
+        <HomePage />
+      </Route>
+      <Route path="/rythm">
+        <RythmPage />
+      </Route>
+      <Route path="/grid-goon">
+        <GridGoon />
+      </Route>
+    </Switch>
+  );
+}
+
 function App() {
   return (
     <BrowserRouter basename="/bungi-machine">
       <AppContainer>
         <Menu />
-        <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route path="/rythm">
-            <RythmPage />
-          </Route>
-          <Route path="/grid-goon">
-            <GridGoon />
-          </Route>
-        </Switch>
+        <Routes />
       </AppContainer>
     </BrowserRouter>
   );
