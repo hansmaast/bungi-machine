@@ -2,7 +2,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Menu } from './components/Menu';
 import GridGoon from './pages/GridGoon';
-// import HomePage from './pages/HomePage';
+import HomePage from './pages/HomePage';
 import RythmPage from './pages/RythmPage';
 import { AppContainer } from './style/appContainer';
 
@@ -13,7 +13,7 @@ function App() {
         <Menu />
         <Switch>
           <Route exact path="/">
-            <div> BUNGI </div>
+            <HomePage />
           </Route>
           <Route path="/rythm">
             <RythmPage />
