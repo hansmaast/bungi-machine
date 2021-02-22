@@ -2,7 +2,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Menu } from './components/Menu';
 import GridGoon from './pages/GridGoon';
-import HomePage from './pages/HomePage';
+// import HomePage from './pages/HomePage';
 import RythmPage from './pages/RythmPage';
 import { AppContainer } from './style/appContainer';
 
