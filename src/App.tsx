@@ -1,25 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import GridGoon from "./pages/GridGoon";
+import HomePage from "./pages/HomePage";
+import RythmPage from "./pages/RythmPage";
+import { StyledLink } from "./style/styledLink";
+import { MenuContainer } from "./MenuContainer";
+import { MenuButton } from "./MenuButton";
+import { AppContainer } from "./style/appContainer";
 
-function App() {
+function App() {  
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [showSettings, setShowSettings] = useState<boolean>(false);
+
+  const closeMenus = () => {
+    setShowMenu(!showMenu);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <AppContainer>
+      <MenuButton isOpen={showMenu} onClick={closeMenus}>
+        {showMenu ? "X" : "O"}
+      </MenuButton>
+      <MenuContainer isOpen={showMenu} >
+         <MenuButton zIndex={25} left="" right={0} isOpen={showSettings} onClick={() => setShowSettings(!showSettings)}>
+            {showSettings ? "X" : "|||"}
+          </MenuButton>
+          <MenuContainer flexWrap="wrap" zIndex={20} isOpen={showSettings} bg="gray">
+  
+          </MenuContainer>
+         <StyledLink to="/rythm" onClick={closeMenus}>Riddm</StyledLink>
+         <StyledLink to="/grid-goon" onClick={closeMenus}>Grid Goon</StyledLink>
+      </MenuContainer>
+      <Switch>
+        <Route exact path="/">
+        <HomePage/>
+        </Route>
+        <Route path="/rythm">
+          <RythmPage/>
+        </Route>
+        <Route path="/grid-goon">
+          <GridGoon/>
+        </Route>
+      </Switch>
+      </AppContainer>
+    </BrowserRouter>
   );
 }
 
