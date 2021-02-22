@@ -6,15 +6,13 @@ import { MenuContainer } from '../style/menuContainer';
 import { StyledLink } from '../style/styledLink';
 
 export function Menu() {
-  const { state, dispatch } = useGlobalState();
+  const { dispatch } = useGlobalState();
 
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [showSettings, setShowSettings] = useState<boolean>(false);
 
-  console.log(state);
-
   const toggleMenu = () => {
-    dispatch({ type: ACTIONS.SET_ACTIVE_EIGHT_STEP, payload: 'YES' });
+    dispatch({ type: ACTIONS.SET_ACTIVE_STEP, payload: 'YES' });
     setShowMenu(!showMenu);
   };
   return (
