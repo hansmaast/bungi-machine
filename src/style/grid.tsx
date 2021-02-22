@@ -3,9 +3,9 @@ import { flexbox, layout } from 'styled-system';
 import { StyleProps } from './types';
 import { multiplier } from '../constants';
 
-export const Grid = styled.div<StyleProps>`
+export const Grid = styled.div<StyleProps & any>`
     display: grid;
-    direction: rtl;
+    direction: ${({ reverse }) => (reverse ? 'rtl' : '')};
     grid-gap: 5px;
     height: 100vw;
     width: 100%;

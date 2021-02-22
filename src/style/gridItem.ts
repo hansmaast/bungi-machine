@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { color } from 'styled-system';
 import { StyleProps } from './types';
 import { disableUserSelect } from './disableUserSelect';
 
@@ -9,4 +10,5 @@ export const GridItem = styled.button<StyleProps & any>`
     background-color: ${({ isTouched }) => (isTouched ? 'black' : 'transparent')};
     border-radius: ${({ isTouched }) => (isTouched ? '50%' : '5%')};
     ${disableUserSelect};
+    ${color}
 `;
