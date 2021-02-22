@@ -1,4 +1,4 @@
-name: 🏗 🚀 💻
+name: Deployment
 on:
   push:
     branches:  
