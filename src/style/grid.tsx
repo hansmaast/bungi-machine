@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import { flexbox, layout } from "styled-system";
-import { StyleProps } from "./types";
-import { multiplier } from "../pages/GridGoon";
+import styled from 'styled-components';
+import { flexbox, layout } from 'styled-system';
+import { StyleProps } from './types';
+import { multiplier } from "../constants";
 
-export const Grid = styled.div<StyleProps> `
+export const Grid = styled.div<StyleProps>`
     display: grid;
     direction: rtl;
     grid-gap: 5px;
@@ -15,7 +15,7 @@ export const Grid = styled.div<StyleProps> `
     ${layout};
 `;
 Grid.defaultProps = {
-    padding: [2, 4],
-    maxHeight: ["100vh", "70vh"],
-    maxWidth: ["100vh", "70vh"],
+  padding: [2, 4],
+  maxHeight: ['100vh', '70vh'],
+  maxWidth: ['100vh', '70vh'],
 };

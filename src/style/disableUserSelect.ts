@@ -1,5 +1,4 @@
-import { css } from "styled-components";
-
+import { css } from 'styled-components';
 
 export const disableUserSelect = css`
  -webkit-touch-callout: none; /* iOS Safari */

@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
-import styled, { DefaultTheme, ThemedStyledInterface } from 'styled-components'
-import { color, space } from 'styled-system'
+import { Link } from 'react-router-dom';
+import styled, { DefaultTheme, ThemedStyledInterface } from 'styled-components';
+import { color, space } from 'styled-system';
 
 type StyledTypes = ThemedStyledInterface<DefaultTheme> & any;
 export const StyledLink: StyledTypes = styled(Link)`
@@ -16,8 +16,7 @@ export const StyledLink: StyledTypes = styled(Link)`
 `;
 
 StyledLink.defaultProps = {
-    padding: 5,
-    m: 3,
-   
-}
+  padding: 5,
+  m: 3,
 
+};
