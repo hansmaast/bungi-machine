@@ -13,7 +13,7 @@ function App() {
         <Menu />
         <Switch>
           <Route exact path="/">
-            <HomePage />
+            <div> BUNGI </div>
           </Route>
           <Route path="/rythm">
             <RythmPage />
