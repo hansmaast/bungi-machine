@@ -1,9 +1,11 @@
 // store.js
 import {
-  Context, createContext, ReactNode, useContext, useReducer,
+  Context, createContext, ReactNode, useContext, useEffect, useReducer,
 } from 'react';
 import { DRUM, SYNTH } from '../constants';
+import { oneBarSixteenNote } from '../helpers/barsAndBeats';
 import { reducer } from './reducer';
+import { sineAmpEnv, sineOsc } from '../sounds';
 
 export interface IGlobalState {
     selectedDrumSound: string;
@@ -12,10 +14,10 @@ export interface IGlobalState {
     tempo: number;
     isLooping: boolean;
     loopEnd: string;
-    activeEightStep: string | null;
-    activeSixteenStep: string | null;
-    triggeredEightSteps: {};
-    triggeredSixteenSteps: {};
+    steps: string[];
+    activeStep: string | null;
+    triggeredSteps: { [index:string] : string } | null;
+    releaseInSeconds: number;
 }
 
 const initialState: IGlobalState = {
@@ -23,22 +25,30 @@ const initialState: IGlobalState = {
   loopEnd: '1:0:0',
   isLooping: true,
   note: '',
+  steps: oneBarSixteenNote,
+  activeStep: null,
   selectedDrumSound: DRUM.KICK,
   selectedSynthSound: SYNTH.SQUARE,
-  activeEightStep: null,
-  activeSixteenStep: null,
-  triggeredEightSteps: {},
-  triggeredSixteenSteps: {},
+  triggeredSteps: {},
+  releaseInSeconds: 0.03,
 };
 
 const store: Context<IGlobalState | any> = createContext(initialState);
 const { Provider } = store;
 
-const ToneProvider = ({ children }: {children: ReactNode}) => {
+const GlobalState = ({ children }: {children: ReactNode}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    if (state.triggeredSteps[state.activeStep]) {
+      sineOsc.connect(sineAmpEnv).start();
+      sineAmpEnv.triggerAttackRelease(state.releaseInSeconds);
+    }
+  }, [state.activeStep, state.triggeredSteps]);
+
   return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };
 
 const useGlobalState = () => useContext(store);
 
-export { useGlobalState, ToneProvider };
+export { useGlobalState, GlobalState };
