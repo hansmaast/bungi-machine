@@ -8,7 +8,7 @@ import { AppContainer } from './style/appContainer';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/bungi-machine">
       <AppContainer>
         <Menu />
         <Switch>

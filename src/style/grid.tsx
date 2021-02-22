@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { flexbox, layout } from 'styled-system';
 import { StyleProps } from './types';
-import { multiplier } from "../constants";
+import { multiplier } from '../constants';
 
 export const Grid = styled.div<StyleProps>`
     display: grid;
