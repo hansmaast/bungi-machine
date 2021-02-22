@@ -4,11 +4,14 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { GlobalStyle } from './style/globalStyle';
+import { ToneProvider } from './context/GlobalState';
 
 ReactDOM.render(
   <StrictMode>
-    <GlobalStyle />
-    <App />
+    <ToneProvider>
+      <GlobalStyle />
+      <App />
+    </ToneProvider>
   </StrictMode>,
   document.getElementById('root'),
 );
