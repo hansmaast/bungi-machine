@@ -2,7 +2,7 @@ import { Flex } from '../style/flex';
 import { Grid } from '../style/grid';
 import TriggerPoint from '../components/TriggerPoint';
 import { bebopLocrian, numbers } from '../constants';
-import { basicSynth } from '../sounds';
+import { basicSynth } from '../instruments/synthesizers';
 
 export default function GridGoon() {
   return (
