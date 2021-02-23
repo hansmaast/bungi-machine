@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.js": "/bungi-machine/static/js/main.41c836a6.chunk.js",
-    "main.js.map": "/bungi-machine/static/js/main.41c836a6.chunk.js.map",
+    "main.js": "/bungi-machine/static/js/main.3df4fcb9.chunk.js",
+    "main.js.map": "/bungi-machine/static/js/main.3df4fcb9.chunk.js.map",
     "runtime-main.js": "/bungi-machine/static/js/runtime-main.3b98425a.js",
     "runtime-main.js.map": "/bungi-machine/static/js/runtime-main.3b98425a.js.map",
-    "static/js/2.b7867279.chunk.js": "/bungi-machine/static/js/2.b7867279.chunk.js",
-    "static/js/2.b7867279.chunk.js.map": "/bungi-machine/static/js/2.b7867279.chunk.js.map",
+    "static/js/2.21c53760.chunk.js": "/bungi-machine/static/js/2.21c53760.chunk.js",
+    "static/js/2.21c53760.chunk.js.map": "/bungi-machine/static/js/2.21c53760.chunk.js.map",
     "static/js/3.f5760eb0.chunk.js": "/bungi-machine/static/js/3.f5760eb0.chunk.js",
     "static/js/3.f5760eb0.chunk.js.map": "/bungi-machine/static/js/3.f5760eb0.chunk.js.map",
     "index.html": "/bungi-machine/index.html",
     "service-worker.js": "/bungi-machine/service-worker.js",
     "service-worker.js.map": "/bungi-machine/service-worker.js.map",
-    "static/js/2.b7867279.chunk.js.LICENSE.txt": "/bungi-machine/static/js/2.b7867279.chunk.js.LICENSE.txt"
+    "static/js/2.21c53760.chunk.js.LICENSE.txt": "/bungi-machine/static/js/2.21c53760.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3b98425a.js",
-    "static/js/2.b7867279.chunk.js",
-    "static/js/main.41c836a6.chunk.js"
+    "static/js/2.21c53760.chunk.js",
+    "static/js/main.3df4fcb9.chunk.js"
   ]
 }
