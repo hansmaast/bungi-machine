@@ -1,11 +1,10 @@
 import { Transport } from 'tone';
+import { SelectDrumSound } from '../components/SelectDrumSound';
 import StepSequencer from '../components/StepSequencer';
 import { useGlobalState } from '../context/GlobalState';
 import { startRhythm } from '../helpers/actions';
-import { sineAmpEnv, sineOsc } from '../sounds';
 import { Button } from '../style/button';
 import { Flex } from '../style/flex';
-import { SelectDrumSound } from '../components/SelectDrumSound';
 
 export default function RythmPage() {
   const { state, dispatch } = useGlobalState();
@@ -15,17 +14,12 @@ export default function RythmPage() {
 
   return (
     <Flex justifyContent="space-between">
-      <h1>Rhythm!</h1>
+      <h1>Bungi</h1>
       <Button type="button" onClick={() => startRhythm(dispatch)}>
         {Transport.state !== 'started' ? 'Play' : 'Pause'}
       </Button>
       <SelectDrumSound />
-      <StepSequencer
-        envelope={sineAmpEnv}
-        oscillator={sineOsc}
-        steps={state.steps}
-        visible
-      />
+      <StepSequencer />
     </Flex>
   );
 }
