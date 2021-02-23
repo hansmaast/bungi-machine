@@ -6,7 +6,7 @@ import { basicSynth } from '../sounds';
 
 export default function GridGoon() {
   return (
-    <Flex>
+    <Flex height="100%">
       <Grid>
         {
           numbers.map((number) => {

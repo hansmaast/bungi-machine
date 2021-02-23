@@ -9,6 +9,7 @@ export const Button = styled.button<StyleProps & any>`
   border: 1px solid;
   border-radius: 4px;
   font-weight: "200";
+  white-space: nowrap;
   ${disableUserSelect};
   ${position};
   ${space};
@@ -17,6 +18,7 @@ export const Button = styled.button<StyleProps & any>`
 `;
 Button.defaultProps = {
   marginY: 3,
+  mx: 2,
   padding: [2],
   paddingX: 3,
   fontSize: 3,

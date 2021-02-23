@@ -3,7 +3,7 @@ import { StyledLink } from '../style/styledLink';
 
 export default function HomePage() {
   return (
-    <Flex>
+    <Flex height="100%">
       <StyledLink to="grid-goon">Grid Goon</StyledLink>
       <StyledLink to="rythm">Riddm</StyledLink>
     </Flex>

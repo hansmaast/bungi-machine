@@ -1,5 +1,12 @@
 import {
+  BorderProps,
   ColorProps, FlexboxProps, LayoutProps, PositionProps, SpaceProps,
 } from 'styled-system';
 
-export type StyleProps = SpaceProps & LayoutProps & FlexboxProps & ColorProps & PositionProps;
+export type StyleProps =
+  SpaceProps &
+  LayoutProps &
+  FlexboxProps &
+  ColorProps &
+  PositionProps &
+  BorderProps;

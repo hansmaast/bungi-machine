@@ -9,3 +9,12 @@ export const disableUserSelect = css`
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 `;
+
+export const hideScrollBar = css`
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+`;
