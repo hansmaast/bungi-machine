@@ -5,6 +5,7 @@ import { startRhythm } from '../helpers/actions';
 import { sineAmpEnv, sineOsc } from '../sounds';
 import { Button } from '../style/button';
 import { Flex } from '../style/flex';
+import { SelectDrumSound } from '../components/SelectDrumSound';
 
 export default function RythmPage() {
   const { state, dispatch } = useGlobalState();
@@ -18,15 +19,7 @@ export default function RythmPage() {
       <Button type="button" onClick={() => startRhythm(dispatch)}>
         {Transport.state !== 'started' ? 'Play' : 'Pause'}
       </Button>
-      <header>
-        <Flex hideScrollbar borderRightWidth={8} borderColor="transparent" borderRightStyle="solid" p="0" maxWidth="100vw" flexDirection="row" overflowX="scroll" justifyContent="space-between">
-          <Button> Kick </Button>
-          <Button> Snare </Button>
-          <Button> Hi-Closed </Button>
-          <Button> Hi-Open </Button>
-          <Button> TomTom </Button>
-        </Flex>
-      </header>
+      <SelectDrumSound />
       <StepSequencer
         envelope={sineAmpEnv}
         oscillator={sineOsc}
