@@ -18,6 +18,15 @@ export default function RythmPage() {
       <Button type="button" onClick={() => startRhythm(dispatch)}>
         {Transport.state !== 'started' ? 'Play' : 'Pause'}
       </Button>
+      <header>
+        <Flex hideScrollbar borderRightWidth={8} borderColor="transparent" borderRightStyle="solid" p="0" maxWidth="100vw" flexDirection="row" overflowX="scroll" justifyContent="space-between">
+          <Button> Kick </Button>
+          <Button> Snare </Button>
+          <Button> Hi-Closed </Button>
+          <Button> Hi-Open </Button>
+          <Button> TomTom </Button>
+        </Flex>
+      </header>
       <StepSequencer
         envelope={sineAmpEnv}
         oscillator={sineOsc}
