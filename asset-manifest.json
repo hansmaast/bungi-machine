@@ -1,21 +1,25 @@
 {
   "files": {
-    "main.js": "/bungi-machine/static/js/main.70614b16.chunk.js",
-    "main.js.map": "/bungi-machine/static/js/main.70614b16.chunk.js.map",
+    "main.js": "/bungi-machine/static/js/main.846eb0cf.chunk.js",
+    "main.js.map": "/bungi-machine/static/js/main.846eb0cf.chunk.js.map",
     "runtime-main.js": "/bungi-machine/static/js/runtime-main.3b98425a.js",
     "runtime-main.js.map": "/bungi-machine/static/js/runtime-main.3b98425a.js.map",
-    "static/js/2.21c53760.chunk.js": "/bungi-machine/static/js/2.21c53760.chunk.js",
-    "static/js/2.21c53760.chunk.js.map": "/bungi-machine/static/js/2.21c53760.chunk.js.map",
+    "static/js/2.64ef6eb3.chunk.js": "/bungi-machine/static/js/2.64ef6eb3.chunk.js",
+    "static/js/2.64ef6eb3.chunk.js.map": "/bungi-machine/static/js/2.64ef6eb3.chunk.js.map",
     "static/js/3.f5760eb0.chunk.js": "/bungi-machine/static/js/3.f5760eb0.chunk.js",
     "static/js/3.f5760eb0.chunk.js.map": "/bungi-machine/static/js/3.f5760eb0.chunk.js.map",
     "index.html": "/bungi-machine/index.html",
     "service-worker.js": "/bungi-machine/service-worker.js",
     "service-worker.js.map": "/bungi-machine/service-worker.js.map",
-    "static/js/2.21c53760.chunk.js.LICENSE.txt": "/bungi-machine/static/js/2.21c53760.chunk.js.LICENSE.txt"
+    "static/js/2.64ef6eb3.chunk.js.LICENSE.txt": "/bungi-machine/static/js/2.64ef6eb3.chunk.js.LICENSE.txt",
+    "static/media/hihat.0dbc2e7a.mp3": "/bungi-machine/static/media/hihat.0dbc2e7a.mp3",
+    "static/media/kick.e8c4f08a.mp3": "/bungi-machine/static/media/kick.e8c4f08a.mp3",
+    "static/media/snare.ebab59a2.mp3": "/bungi-machine/static/media/snare.ebab59a2.mp3",
+    "static/media/tom1.7e5272fb.mp3": "/bungi-machine/static/media/tom1.7e5272fb.mp3"
   },
   "entrypoints": [
     "static/js/runtime-main.3b98425a.js",
-    "static/js/2.21c53760.chunk.js",
-    "static/js/main.70614b16.chunk.js"
+    "static/js/2.64ef6eb3.chunk.js",
+    "static/js/main.846eb0cf.chunk.js"
   ]
 }
