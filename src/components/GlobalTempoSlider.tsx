@@ -1,11 +1,12 @@
 import { useGlobalState } from '../context/GlobalState';
 import { ACTIONS } from '../context/reducer';
+import { Flex } from '../style/flex';
 import { StyledSlider } from '../style/slider';
 
 export function GlobalTempoSlider() {
   const { state, dispatch } = useGlobalState();
   return (
-    <>
+    <Flex>
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label>Tempo</label>
       <StyledSlider
@@ -21,6 +22,6 @@ export function GlobalTempoSlider() {
           payload: e.currentTarget.value,
         })}
       />
-    </>
+    </Flex>
   );
 }
