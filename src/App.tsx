@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { NavMenu } from './components/Menu';
+import { NavMenu } from './components/NavMenu';
 import { SettingsMenu } from './components/SettingsMenu';
 import GridGoon from './pages/GridGoon';
 import HomePage from './pages/HomePage';
