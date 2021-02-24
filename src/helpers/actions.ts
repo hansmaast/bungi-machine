@@ -13,7 +13,6 @@ export function scheduleRepeat(dispatch: any, interval = '16n') {
 
     Draw.schedule(() => {
       dispatch({ type: ACTIONS.SET_ACTIVE_STEP, payload: position });
-      console.log(position);
     }, time);
   }, interval);
 }
