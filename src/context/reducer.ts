@@ -1,4 +1,5 @@
-import { IGlobalState } from './GlobalState';
+import { DRUM } from '../constants';
+import { clearedSounds, IGlobalState } from './GlobalState';
 
 export const ACTIONS = {
   SELECT_DRUM: 'SELECT_DRUM',
@@ -10,11 +11,30 @@ export const ACTIONS = {
   SET_TRIGGERED_HIHATS: 'SET_TRIGGERED_HIHATS',
   SET_TRIGGERED_OPEN_HIHATS: 'SET_TRIGGERED_OPEN_HIHATS',
   SET_TRIGGERED_TOMS: 'SET_TRIGGERED_TOMS',
+  CLEAR_ALL: 'CLEAR_ALL',
+  CLEAR_PATTERN: 'CLEAR_PATTERN',
 };
 
 interface Action {
     type: string;
     payload: any;
+}
+
+function getClearedDrumPattern(selectedDrumSound: string): { [index:string]: {}} {
+  switch (selectedDrumSound) {
+    case DRUM.KICK:
+      return { triggeredKicks: {} };
+    case DRUM.SNARE:
+      return { triggeredSnares: {} };
+    case DRUM.HIHAT:
+      return { triggeredHiHats: {} };
+    case DRUM.HIHAT_OPEN:
+      return { triggeredOpenHiHats: {} };
+    case DRUM.TOM:
+      return { triggeredToms: {} };
+    default:
+      return {};
+  }
 }
 
 export const reducer = (state: IGlobalState | any, action: Action) => {
@@ -37,6 +57,10 @@ export const reducer = (state: IGlobalState | any, action: Action) => {
       return { ...state, triggeredOpenHiHats: action.payload };
     case ACTIONS.SET_TRIGGERED_TOMS:
       return { ...state, triggeredToms: action.payload };
+    case ACTIONS.CLEAR_ALL:
+      return { ...state, ...clearedSounds };
+    case ACTIONS.CLEAR_PATTERN:
+      return { ...state, ...getClearedDrumPattern(action.payload) };
     default:
       return state;
   }

@@ -6,6 +6,7 @@ import { startRhythm } from '../helpers/actions';
 import { Button } from '../style/button';
 import { Flex } from '../style/flex';
 import { GlobalTempoSlider } from '../components/GlobalTempoSlider';
+import { ClearPatternControls } from '../components/ClearPatternControls';
 
 export default function RythmPage() {
   const { dispatch } = useGlobalState();
@@ -13,8 +14,8 @@ export default function RythmPage() {
   return (
     <Flex justifyContent="space-between">
       <h1>Bungi</h1>
+      <ClearPatternControls />
       <GlobalTempoSlider />
-
       <Button type="button" onClick={() => startRhythm(dispatch)}>
         {Transport.state !== 'started' ? 'Play' : 'Pause'}
       </Button>

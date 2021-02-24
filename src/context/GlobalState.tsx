@@ -25,6 +25,14 @@ export interface IGlobalState {
     releaseInSeconds: number;
 }
 
+export const clearedSounds = {
+  triggeredKicks: {},
+  triggeredSnares: {},
+  triggeredHiHats: {},
+  triggeredOpenHiHats: {},
+  triggeredToms: {},
+};
+
 const initialState: IGlobalState = {
   tempo: 120,
   loopEnd: '1:0:0',
@@ -34,11 +42,7 @@ const initialState: IGlobalState = {
   activeStep: null,
   selectedDrumSound: DRUM.KICK,
   selectedSynthSound: SYNTH.SQUARE,
-  triggeredKicks: {},
-  triggeredSnares: {},
-  triggeredHiHats: {},
-  triggeredOpenHiHats: {},
-  triggeredToms: {},
+  ...clearedSounds,
   releaseInSeconds: 0.03,
 };
 
