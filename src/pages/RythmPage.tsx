@@ -1,28 +1,21 @@
 import { Transport } from 'tone';
+import { ClearPatternControls } from '../components/ClearPatternControls';
 import { SelectDrumSound } from '../components/SelectDrumSound';
 import StepSequencer from '../components/StepSequencer';
 import { useGlobalState } from '../context/GlobalState';
 import { startRhythm } from '../helpers/actions';
 import { Button } from '../style/button';
 import { Flex } from '../style/flex';
-import { GlobalTempoSlider } from '../components/GlobalTempoSlider';
-import { ClearPatternControls } from '../components/ClearPatternControls';
-import { MasterVolumeSlider } from '../components/MasterVolumeSlider';
-import { SelectDrumSampler } from '../components/SelectDrumSampler';
-import { SaveOrLoadPattern } from '../components/SaveOrLoadPattern';
+import { Title } from '../style/title';
 
 export default function RythmPage() {
   const { dispatch } = useGlobalState();
 
   return (
-    <Flex justifyContent="space-between">
-      <h1>Bungi</h1>
+    <Flex>
+      <Title>Bungi</Title>
       <ClearPatternControls />
-      <SelectDrumSampler />
-      <GlobalTempoSlider />
-      <MasterVolumeSlider />
-      <SaveOrLoadPattern />
-      <Button onClick={() => startRhythm(dispatch)}>
+      <Button marginY={0} onClick={() => startRhythm(dispatch)}>
         {Transport.state !== 'started' ? 'Play' : 'Pause'}
       </Button>
       <SelectDrumSound />

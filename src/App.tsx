@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Menu } from './components/Menu';
+import { NavMenu } from './components/Menu';
+import { SettingsMenu } from './components/SettingsMenu';
 import GridGoon from './pages/GridGoon';
 import HomePage from './pages/HomePage';
 import RythmPage from './pages/RythmPage';
@@ -26,7 +27,8 @@ function App() {
   return (
     <BrowserRouter basename="/bungi-machine">
       <AppContainer>
-        <Menu />
+        <NavMenu />
+        <SettingsMenu />
         <Routes />
       </AppContainer>
     </BrowserRouter>
