@@ -1,4 +1,5 @@
 import { DRUM } from '../constants';
+import { persistInLocalStorage, retrieveFromLocalStorage } from '../utils';
 import { clearedSounds, IGlobalState } from './GlobalState';
 
 export const ACTIONS = {
@@ -15,9 +16,11 @@ export const ACTIONS = {
   SET_TRIGGERED_TOMS: 'SET_TRIGGERED_TOMS',
   CLEAR_ALL: 'CLEAR_ALL',
   CLEAR_PATTERN: 'CLEAR_PATTERN',
+  SAVE_PATTERN: 'SAVE_PATTERN',
+  LOAD_PATTERN: 'LOAD_PATTERN',
 };
 
-interface Action {
+export interface Action {
     type: string;
     payload: any;
 }
@@ -67,6 +70,15 @@ export const reducer = (state: IGlobalState | any, action: Action) => {
       return { ...state, ...clearedSounds };
     case ACTIONS.CLEAR_PATTERN:
       return { ...state, ...getClearedDrumPattern(action.payload) };
+    case ACTIONS.SAVE_PATTERN:
+      persistInLocalStorage(action.payload, { ...state, selectedSampler: null });
+      return state;
+    case ACTIONS.LOAD_PATTERN:
+      // eslint-disable-next-line no-case-declarations
+      const savedState = retrieveFromLocalStorage(action.payload);
+      // could not store selectedSampler as string,
+      // so we set it to the current states sampler.
+      return { ...savedState, selectedSampler: state.selectedSampler };
     default:
       return state;
   }

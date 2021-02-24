@@ -7,6 +7,9 @@ import { Button } from '../style/button';
 import { Flex } from '../style/flex';
 import { GlobalTempoSlider } from '../components/GlobalTempoSlider';
 import { ClearPatternControls } from '../components/ClearPatternControls';
+import { MasterVolumeSlider } from '../components/MasterVolumeSlider';
+import { SelectDrumSampler } from '../components/SelectDrumSampler';
+import { SaveOrLoadPattern } from '../components/SaveOrLoadPattern';
 
 export default function RythmPage() {
   const { dispatch } = useGlobalState();
@@ -17,8 +20,9 @@ export default function RythmPage() {
       <ClearPatternControls />
       <SelectDrumSampler />
       <GlobalTempoSlider />
-      <Button type="button" onClick={() => startRhythm(dispatch)}>
       <MasterVolumeSlider />
+      <SaveOrLoadPattern />
+      <Button onClick={() => startRhythm(dispatch)}>
         {Transport.state !== 'started' ? 'Play' : 'Pause'}
       </Button>
       <SelectDrumSound />
