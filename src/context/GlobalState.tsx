@@ -2,19 +2,19 @@
 import {
   Context, createContext, ReactNode, useContext, useEffect, useReducer,
 } from 'react';
-import { Transport } from 'tone';
+import { Destination, Sampler, Transport } from 'tone';
 import { DRUM, SYNTH } from '../constants';
 import { oneBarSixteenNote } from '../helpers/barsAndBeats';
-import { sampler } from '../instruments/samplers';
 import { SAMPLERS } from '../instruments/samplers';
 import { reducer } from './reducer';
 
 export interface IGlobalState {
+    tempo: number;
+    masterVolume: number;
     selectedDrumSound: string;
     selectedSampler: Sampler;
     selectedSynthSound: string;
     note: string;
-    tempo: number;
     isLooping: boolean;
     loopEnd: string;
     steps: string[];
@@ -37,6 +37,7 @@ export const clearedSounds = {
 
 const initialState: IGlobalState = {
   tempo: 120,
+  masterVolume: 0,
   loopEnd: '1:0:0',
   isLooping: true,
   note: '',
@@ -58,6 +59,8 @@ const GlobalState = ({ children }: {children: ReactNode}) => {
   Transport.bpm.value = state.tempo;
   Transport.loop = state.isLooping;
   Transport.loopEnd = state.loopEnd;
+
+  Destination.set({ volume: state.masterVolume });
 
   useEffect(() => {
     if (state.triggeredKicks[state.activeStep]) {

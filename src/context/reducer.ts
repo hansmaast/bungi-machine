@@ -5,6 +5,7 @@ export const ACTIONS = {
   SELECT_DRUM_PRESET: 'SELECT_DRUMPRESET',
   SELECT_DRUM: 'SELECT_DRUM',
   SELECT_SYNTH: 'SELECT_SYNTH',
+  SET_MASTER_VOLUME: 'SET_MASTER_VOLUME',
   SET_TEMPO: 'SET_TEMPO',
   SET_ACTIVE_STEP: 'SET_ACTIVE_STEP',
   SET_TRIGGERED_KICKS: 'SET_TRIGGERED_KICKS',
@@ -46,6 +47,8 @@ export const reducer = (state: IGlobalState | any, action: Action) => {
       return { ...state, selectedDrumSound: action.payload };
     case ACTIONS.SELECT_SYNTH:
       return { ...state, selectedSynthSound: action.payload };
+    case ACTIONS.SET_MASTER_VOLUME:
+      return { ...state, masterVolume: action.payload };
     case ACTIONS.SET_TEMPO:
       return { ...state, tempo: action.payload };
     case ACTIONS.SET_ACTIVE_STEP:

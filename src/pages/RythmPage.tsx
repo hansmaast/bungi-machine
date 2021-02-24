@@ -18,6 +18,7 @@ export default function RythmPage() {
       <SelectDrumSampler />
       <GlobalTempoSlider />
       <Button type="button" onClick={() => startRhythm(dispatch)}>
+      <MasterVolumeSlider />
         {Transport.state !== 'started' ? 'Play' : 'Pause'}
       </Button>
       <SelectDrumSound />
