@@ -2,6 +2,7 @@
 import {
   Context, createContext, ReactNode, useContext, useEffect, useReducer,
 } from 'react';
+import { Transport } from 'tone';
 import { DRUM, SYNTH } from '../constants';
 import { oneBarSixteenNote } from '../helpers/barsAndBeats';
 import { sampler } from '../instruments/samplers';
@@ -25,7 +26,7 @@ export interface IGlobalState {
 }
 
 const initialState: IGlobalState = {
-  tempo: 125,
+  tempo: 120,
   loopEnd: '1:0:0',
   isLooping: true,
   note: '',
@@ -46,6 +47,10 @@ const { Provider } = store;
 
 const GlobalState = ({ children }: {children: ReactNode}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  Transport.bpm.value = state.tempo;
+  Transport.loop = state.isLooping;
+  Transport.loopEnd = state.loopEnd;
 
   useEffect(() => {
     if (state.triggeredKicks[state.activeStep]) {

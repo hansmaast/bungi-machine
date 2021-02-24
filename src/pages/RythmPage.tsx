@@ -5,16 +5,16 @@ import { useGlobalState } from '../context/GlobalState';
 import { startRhythm } from '../helpers/actions';
 import { Button } from '../style/button';
 import { Flex } from '../style/flex';
+import { GlobalTempoSlider } from '../components/GlobalTempoSlider';
 
 export default function RythmPage() {
-  const { state, dispatch } = useGlobalState();
-
-  Transport.loop = state.isLooping;
-  Transport.loopEnd = state.loopEnd;
+  const { dispatch } = useGlobalState();
 
   return (
     <Flex justifyContent="space-between">
       <h1>Bungi</h1>
+      <GlobalTempoSlider />
+
       <Button type="button" onClick={() => startRhythm(dispatch)}>
         {Transport.state !== 'started' ? 'Play' : 'Pause'}
       </Button>
