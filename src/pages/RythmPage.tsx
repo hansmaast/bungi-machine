@@ -15,6 +15,7 @@ export default function RythmPage() {
     <Flex justifyContent="space-between">
       <h1>Bungi</h1>
       <ClearPatternControls />
+      <SelectDrumSampler />
       <GlobalTempoSlider />
       <Button type="button" onClick={() => startRhythm(dispatch)}>
         {Transport.state !== 'started' ? 'Play' : 'Pause'}

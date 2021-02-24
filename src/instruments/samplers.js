@@ -1,18 +1,19 @@
-import { Sampler } from 'tone';
 /**
  * This file is .js cause .ts caused trouble when importing audio.
  */
+import { Sampler } from 'tone';
+import { CR78_URLS } from '../assets/drums/CR78';
+import { TR808_URLS } from '../assets/drums/TR808';
 
-import kick from '../assets/drums/CR78/kick.mp3';
-import snare from '../assets/drums/CR78/snare.mp3';
-import hihat from '../assets/drums/CR78/hihat.mp3';
-import tom from '../assets/drums/CR78/tom1.mp3';
-
-export const sampler = new Sampler({
-  urls: {
-    C1: kick,
-    D1: snare,
-    E1: hihat,
-    F1: tom,
-  },
+const CR78 = new Sampler({
+  urls: CR78_URLS,
 }).toDestination();
+
+const TR808 = new Sampler({
+  urls: TR808_URLS,
+}).toDestination();
+
+export const SAMPLERS = {
+  CR78,
+  TR808,
+};

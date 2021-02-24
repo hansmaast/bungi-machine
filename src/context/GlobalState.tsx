@@ -6,10 +6,12 @@ import { Transport } from 'tone';
 import { DRUM, SYNTH } from '../constants';
 import { oneBarSixteenNote } from '../helpers/barsAndBeats';
 import { sampler } from '../instruments/samplers';
+import { SAMPLERS } from '../instruments/samplers';
 import { reducer } from './reducer';
 
 export interface IGlobalState {
     selectedDrumSound: string;
+    selectedSampler: Sampler;
     selectedSynthSound: string;
     note: string;
     tempo: number;
@@ -40,6 +42,7 @@ const initialState: IGlobalState = {
   note: '',
   steps: oneBarSixteenNote,
   activeStep: null,
+  selectedSampler: SAMPLERS.CR78,
   selectedDrumSound: DRUM.KICK,
   selectedSynthSound: SYNTH.SQUARE,
   ...clearedSounds,
@@ -58,21 +61,21 @@ const GlobalState = ({ children }: {children: ReactNode}) => {
 
   useEffect(() => {
     if (state.triggeredKicks[state.activeStep]) {
-      sampler.triggerAttackRelease('C1', 0.5);
+      state.selectedSampler.triggerAttackRelease('C1', 0.5);
     }
     if (state.triggeredSnares[state.activeStep]) {
-      sampler.triggerAttackRelease('D1', 0.5);
+      state.selectedSampler.triggerAttackRelease('D1', 0.5);
     }
     if (state.triggeredHiHats[state.activeStep]) {
-      sampler.triggerAttackRelease('E1', 0.5);
+      state.selectedSampler.triggerAttackRelease('E1', 0.5);
     }
     if (state.triggeredOpenHiHats[state.activeStep]) {
-      sampler.triggerAttackRelease('E1', 0.5);
+      state.selectedSampler.triggerAttackRelease('F1', 0.5);
     }
     if (state.triggeredToms[state.activeStep]) {
-      sampler.triggerAttackRelease('F1', 0.5);
+      state.selectedSampler.triggerAttackRelease('G1', 0.5);
     }
-  }, [state.activeStep, state.triggeredSteps]);
+  }, [state.activeStep, state.triggeredSteps, state.selectedSampler]);
 
   return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };

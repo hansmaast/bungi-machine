@@ -2,6 +2,7 @@ import { DRUM } from '../constants';
 import { clearedSounds, IGlobalState } from './GlobalState';
 
 export const ACTIONS = {
+  SELECT_DRUM_PRESET: 'SELECT_DRUMPRESET',
   SELECT_DRUM: 'SELECT_DRUM',
   SELECT_SYNTH: 'SELECT_SYNTH',
   SET_TEMPO: 'SET_TEMPO',
@@ -39,6 +40,8 @@ function getClearedDrumPattern(selectedDrumSound: string): { [index:string]: {}}
 
 export const reducer = (state: IGlobalState | any, action: Action) => {
   switch (action.type) {
+    case ACTIONS.SELECT_DRUM_PRESET:
+      return { ...state, selectedSampler: action.payload };
     case ACTIONS.SELECT_DRUM:
       return { ...state, selectedDrumSound: action.payload };
     case ACTIONS.SELECT_SYNTH:
