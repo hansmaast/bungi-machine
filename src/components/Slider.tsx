@@ -1,7 +1,10 @@
-/* eslint-disable react/react-in-jsx-scope */
-import PropTypes from 'prop-types';
+interface Props {
+  value: number;
+  label: string;
+  onChange(): void;
+}
 
-export default function Slider({ value, label, onChange }) {
+export default function Slider({ value, label, onChange }: Props) {
   return (
     <label htmlFor="env-input">
       { label }
@@ -18,9 +21,3 @@ export default function Slider({ value, label, onChange }) {
     </label>
   );
 }
-
-Slider.propTypes = {
-  value: PropTypes.number.isRequired,
-  label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
