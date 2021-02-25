@@ -1,46 +1,60 @@
 import { DRUM } from '../constants';
 import { useGlobalState } from '../context/GlobalState';
-import { ACTIONS } from '../context/reducer';
+import { TriggeredSteps, Action } from '../context/types';
+
 import { GridItem } from '../style/gridItem';
 
 export default function BeatStep({ step }: {step: string}) {
   const { state, dispatch } = useGlobalState();
-  const { activeStep } = state;
+  const {
+    activeStep, selectedDrumSound, triggeredKicks, triggeredSnares,
+    triggeredHiHats, triggeredOpenHiHats, triggeredToms,
+  } = state;
 
-  let ACTION: string;
-  let triggeredSteps: {[index:string]: string};
-  switch (state.selectedDrumSound) {
-    case DRUM.KICK:
-      ACTION = ACTIONS.SET_TRIGGERED_KICKS;
-      triggeredSteps = state.triggeredKicks;
+  let triggeredSteps: TriggeredSteps;
+  let action: Action;
+  switch (selectedDrumSound) {
+    case 'KICK':
+      triggeredSteps = triggeredKicks;
+      action = {
+        type: 'SET_TRIGGERED_KICKS',
+        payload: { ...triggeredKicks, [step]: !triggeredKicks[step] },
+      };
       break;
     case DRUM.SNARE:
-      ACTION = ACTIONS.SET_TRIGGERED_SNARES;
-      triggeredSteps = state.triggeredSnares;
+      triggeredSteps = triggeredSnares;
+      action = {
+        type: 'SET_TRIGGERED_SNARES',
+        payload: { ...triggeredSnares, [step]: !triggeredSnares[step] },
+      };
       break;
     case DRUM.HIHAT:
-      ACTION = ACTIONS.SET_TRIGGERED_HIHATS;
-      triggeredSteps = state.triggeredHiHats;
+      triggeredSteps = triggeredHiHats;
+      action = {
+        type: 'SET_TRIGGERED_HIHATS',
+        payload: { ...triggeredHiHats, [step]: !triggeredHiHats[step] },
+      };
       break;
     case DRUM.HIHAT_OPEN:
-      ACTION = ACTIONS.SET_TRIGGERED_OPEN_HIHATS;
-      triggeredSteps = state.triggeredOpenHiHats;
+      triggeredSteps = triggeredOpenHiHats;
+      action = {
+        type: 'SET_TRIGGERED_OPEN_HIHATS',
+        payload: { ...triggeredOpenHiHats, [step]: !triggeredOpenHiHats[step] },
+      };
       break;
     case DRUM.TOM:
-      ACTION = ACTIONS.SET_TRIGGERED_TOMS;
-      triggeredSteps = state.triggeredToms;
+      triggeredSteps = triggeredToms;
+      action = {
+        type: 'SET_TRIGGERED_TOMS',
+        payload: { ...triggeredToms, [step]: !triggeredToms[step] },
+      };
       break;
     default:
-      ACTION = ACTIONS.SET_TRIGGERED_KICKS;
-      triggeredSteps = state.triggeredKicks;
+      triggeredSteps = triggeredKicks;
       break;
   }
-
   const toggleStep = () => {
-    dispatch({
-      type: ACTION,
-      payload: { ...triggeredSteps, [step]: !triggeredSteps[step] },
-    });
+    dispatch(action);
   };
 
   return (
