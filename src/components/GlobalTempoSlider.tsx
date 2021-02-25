@@ -1,5 +1,4 @@
 import { useGlobalState } from '../context/GlobalState';
-import { ACTIONS } from '../context/reducer';
 import { Flex } from '../style/flex';
 import { StyledSlider } from '../style/slider';
 
@@ -18,7 +17,7 @@ export function GlobalTempoSlider() {
         step={1}
         value={state.tempo}
         onChange={(e: any) => dispatch({
-          type: ACTIONS.SET_TEMPO,
+          type: 'SET_TEMPO',
           payload: e.currentTarget.value,
         })}
       />

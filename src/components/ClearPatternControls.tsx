@@ -1,7 +1,6 @@
 import { useGlobalState } from '../context/GlobalState';
 import { Button } from '../style/button';
 import { Flex } from '../style/flex';
-import { ACTIONS } from '../context/reducer';
 
 export function ClearPatternControls() {
   const { state, dispatch } = useGlobalState();
@@ -10,7 +9,7 @@ export function ClearPatternControls() {
       <Button
         type="button"
         onClick={() => dispatch({
-          type: ACTIONS.CLEAR_ALL,
+          type: 'CLEAR_ALL', payload: null,
         })}
       >
         CLEAR ALL
@@ -18,7 +17,7 @@ export function ClearPatternControls() {
       <Button
         type="button"
         onClick={() => dispatch({
-          type: ACTIONS.CLEAR_PATTERN,
+          type: 'CLEAR_PATTERN',
           payload: state.selectedDrumSound,
         })}
       >

@@ -1,6 +1,5 @@
 import { DRUM } from '../constants';
 import { useGlobalState } from '../context/GlobalState';
-import { ACTIONS } from '../context/reducer';
 import { Button } from '../style/button';
 import { Flex } from '../style/flex';
 
@@ -8,7 +7,7 @@ export function SelectDrumSound() {
   const { state, dispatch } = useGlobalState();
 
   const handleClick = (e: any) => dispatch({
-    type: ACTIONS.SELECT_DRUM,
+    type: 'SELECT_DRUM',
     payload: e.currentTarget.name,
   });
 

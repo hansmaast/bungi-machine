@@ -1,6 +1,5 @@
 import { Draw, Transport } from 'tone';
 import { start as startTone } from 'tone/build/esm/core/Global';
-import { ACTIONS } from '../context/reducer';
 
 function getPositionWithoutDecimals() {
   const position = Transport.position.toString();
@@ -12,7 +11,7 @@ export function scheduleRepeat(dispatch: any, interval = '16n') {
     const position = getPositionWithoutDecimals();
 
     Draw.schedule(() => {
-      dispatch({ type: ACTIONS.SET_ACTIVE_STEP, payload: position });
+      dispatch({ type: 'SET_ACTIVE_STEP', payload: position });
     }, time);
   }, interval);
 }

@@ -1,9 +1,8 @@
 import { Sampler } from 'tone';
 import { useGlobalState } from '../context/GlobalState';
+import { SAMPLERS } from '../instruments/samplers';
 import { Button } from '../style/button';
 import { Flex } from '../style/flex';
-import { ACTIONS } from '../context/reducer';
-import { SAMPLERS } from '../instruments/samplers';
 import { Title } from '../style/title';
 
 const { TR808, CR78 } = SAMPLERS;
@@ -13,12 +12,11 @@ export function SelectDrumSampler() {
   const { selectedSampler } = state;
   const handleSelection = (sampler :Sampler) => {
     dispatch({
-      type: ACTIONS.SELECT_DRUM_PRESET,
+      type: 'SELECT_DRUM_PRESET',
       payload: sampler,
     });
   };
 
-  console.log(state.selectedSampler.name);
   return (
     <Flex>
       <Title fontSize={3} fontWeight={500}>
