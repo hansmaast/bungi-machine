@@ -1,31 +1,14 @@
 // store.js
 import {
-  Context, createContext, ReactNode, useContext, useEffect, useReducer,
+  createContext, ReactNode, useContext, useEffect, useReducer,
 } from 'react';
-import { Destination, Sampler, Transport } from 'tone';
-import { DRUM, SYNTH } from '../constants';
+import { Destination, Transport } from 'tone';
 import { oneBarSixteenNote } from '../helpers/barsAndBeats';
 import { SAMPLERS } from '../instruments/samplers';
-import { reducer } from './reducer';
-
-export interface IGlobalState {
-    tempo: number;
-    masterVolume: number;
-    selectedDrumSound: string;
-    selectedSampler: Sampler;
-    selectedSynthSound: string;
-    note: string;
-    isLooping: boolean;
-    loopEnd: string;
-    steps: string[];
-    activeStep: string | null;
-    triggeredKicks: { [index:string] : string } | null;
-    triggeredSnares: { [index:string] : string } | null;
-    triggeredHiHats: { [index:string] : string } | null;
-    triggeredOpenHiHats: { [index:string] : string } | null;
-    triggeredToms: { [index:string] : string } | null;
-    releaseInSeconds: number;
-}
+import {
+  reducer,
+} from './reducer';
+import { Context, IGlobalState } from './types';
 
 export const clearedSounds = {
   triggeredKicks: {},
@@ -42,15 +25,14 @@ const initialState: IGlobalState = {
   isLooping: true,
   note: '',
   steps: oneBarSixteenNote,
-  activeStep: null,
+  activeStep: '',
   selectedSampler: SAMPLERS.CR78,
-  selectedDrumSound: DRUM.KICK,
-  selectedSynthSound: SYNTH.SQUARE,
+  selectedDrumSound: 'KICK',
   ...clearedSounds,
   releaseInSeconds: 0.03,
 };
 
-const store: Context<IGlobalState | any> = createContext(initialState);
+const store = createContext<Context>({ state: initialState, dispatch: () => {} });
 const { Provider } = store;
 
 const GlobalState = ({ children }: {children: ReactNode}) => {
@@ -78,7 +60,7 @@ const GlobalState = ({ children }: {children: ReactNode}) => {
     if (state.triggeredToms[state.activeStep]) {
       state.selectedSampler.triggerAttackRelease('G1', 0.5);
     }
-  }, [state.activeStep, state.triggeredSteps, state.selectedSampler]);
+  }, [state.activeStep]);
 
   return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };
