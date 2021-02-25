@@ -7,7 +7,7 @@ import { basicSynth } from '../instruments/synthesizers';
 export default function GridGoon() {
   return (
     <Flex height="100%">
-      <Grid>
+      <Grid heigth="100vw">
         {
           numbers.map((number) => {
             let octave: string = '3';

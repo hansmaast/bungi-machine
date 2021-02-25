@@ -8,7 +8,7 @@ export default function StepSequencer() {
 
   return (
 
-    <Grid reverse>
+    <Grid reverse height="100vw">
       { state.steps.map((step: string) => (
         <BeatStep
           key={step}
