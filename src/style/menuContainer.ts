@@ -20,6 +20,7 @@ export const Z_INDEX = {
 export const MenuContainer = styled.div<StyleProps & any>`
   z-index: ${({ forSettings }) => (forSettings ? Z_INDEX.SETTINGS_MENU : Z_INDEX.NAV_MENU)};
   transform: ${({ isOpen, fromRight }) => (isOpen ? '' : `translateX(${fromRight ? '' : '-'}100%)`)};
+  right: ${({ fromRight }) => (fromRight ? 0 : '')};
   transition: transform 0.1s ease-in-out;
   width: 100%;
   height: 100%;
