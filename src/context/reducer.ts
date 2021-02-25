@@ -9,6 +9,8 @@ export const reducer = (state: IGlobalState, action: Action): IGlobalState => {
       return { ...state, selectedSampler: action.payload };
     case 'SELECT_DRUM':
       return { ...state, selectedDrumSound: action.payload };
+    case 'SELECT_DRUM_PATTERN':
+      return { ...state, selectedDrumPattern: action.payload };
     case 'SET_MASTER_VOLUME':
       return { ...state, masterVolume: action.payload };
     case 'SET_TEMPO':

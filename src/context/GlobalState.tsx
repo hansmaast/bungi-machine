@@ -28,6 +28,7 @@ const initialState: IGlobalState = {
   activeStep: '',
   selectedSampler: SAMPLERS.CR78,
   selectedDrumSound: 'KICK',
+  selectedDrumPattern: '1',
   ...clearedSounds,
   releaseInSeconds: 0.03,
 };

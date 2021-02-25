@@ -7,6 +7,7 @@ import { startRhythm } from '../helpers/actions';
 import { Button } from '../style/button';
 import { Flex } from '../style/flex';
 import { Title } from '../style/title';
+import { SelectDrumPattern } from '../components/SelectDrumPattern';
 
 export default function RythmPage() {
   const { dispatch } = useGlobalState();
@@ -15,10 +16,14 @@ export default function RythmPage() {
     <Flex>
       <Title>Bungi</Title>
       <ClearPatternControls />
-      <Button marginY={0} onClick={() => startRhythm(dispatch)}>
-        {Transport.state !== 'started' ? 'Play' : 'Pause'}
-      </Button>
+      <Flex flexDirection="row">
+        <Button marginY={0} onClick={() => startRhythm(dispatch)}>
+          {Transport.state !== 'started' ? 'Play' : 'Pause'}
+        </Button>
+        <Button marginY={0} onClick={() => console.log('Loop pattern pressed!')}>♾</Button>
+      </Flex>
       <SelectDrumSound />
+      <SelectDrumPattern />
       <StepSequencer />
     </Flex>
   );

@@ -2,6 +2,7 @@ import { Dispatch } from 'react';
 import { Sampler } from 'tone';
 
 export type DrumType = 'KICK' | 'SNARE' | 'HIHAT' | 'HIHAT_OPEN' | 'TOM';
+export type DrumPattern = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
 export interface TriggeredSteps {[key:string]: string | boolean}
 export type TriggeredStepsObject = {
   [index: string]: TriggeredSteps;
@@ -11,6 +12,7 @@ export type IGlobalState = {
     tempo: number;
     masterVolume: number;
     selectedDrumSound: DrumType;
+    selectedDrumPattern: DrumPattern;
     selectedSampler: Sampler;
     note: string;
     isLooping: boolean;
@@ -28,6 +30,7 @@ export type IGlobalState = {
 export type Action =
 | { type: 'SELECT_DRUM_PRESET'; payload: Sampler; }
 | { type: 'SELECT_DRUM'; payload: DrumType; }
+| { type: 'SELECT_DRUM_PATTERN'; payload: DrumPattern; }
 | { type: 'SET_MASTER_VOLUME'; payload: number; }
 | { type: 'SET_TEMPO'; payload: number; }
 | { type: 'SET_ACTIVE_STEP'; payload: string; } // Could make a type Step fro this, using a regex to match "s:s:s:"
