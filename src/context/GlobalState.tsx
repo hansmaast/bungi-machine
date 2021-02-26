@@ -8,9 +8,9 @@ import { SAMPLERS } from '../instruments/samplers';
 import {
   reducer,
 } from './reducer';
-import { Context, IGlobalState } from './types';
+import { Context, IGlobalState, TriggeredStepsObject } from './types';
 
-export const clearedSounds = {
+export const clearedSounds: TriggeredStepsObject = {
   triggeredKicks: {},
   triggeredSnares: {},
   triggeredHiHats: {},
@@ -18,18 +18,27 @@ export const clearedSounds = {
   triggeredToms: {},
 };
 
+export const clearedPatterns: TriggeredStepsObject[] = [
+  { ...clearedSounds },
+  { ...clearedSounds },
+  { ...clearedSounds },
+  { ...clearedSounds },
+  { ...clearedSounds },
+  { ...clearedSounds },
+  { ...clearedSounds },
+  { ...clearedSounds },
+];
 const initialState: IGlobalState = {
   tempo: 120,
   masterVolume: 0,
   loopEnd: '1:0:0',
   isLooping: true,
-  note: '',
   steps: oneBarSixteenNote,
   activeStep: '',
   selectedSampler: SAMPLERS.CR78,
   selectedDrumSound: 'KICK',
-  selectedDrumPattern: '1',
-  ...clearedSounds,
+  selectedDrumPattern: 1,
+  drumPatterns: clearedPatterns,
   releaseInSeconds: 0.03,
 };
 
@@ -38,7 +47,10 @@ const { Provider } = store;
 
 const GlobalState = ({ children }: {children: ReactNode}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  const {
+    // eslint-disable-next-line no-unused-vars
+    drumPatterns, selectedDrumPattern, activeStep, selectedSampler,
+  } = state;
   Transport.bpm.value = state.tempo;
   Transport.loop = state.isLooping;
   Transport.loopEnd = state.loopEnd;
@@ -46,22 +58,22 @@ const GlobalState = ({ children }: {children: ReactNode}) => {
   Destination.set({ volume: state.masterVolume });
 
   useEffect(() => {
-    if (state.triggeredKicks[state.activeStep]) {
-      state.selectedSampler.triggerAttackRelease('C1', 0.5);
+    if (drumPatterns[selectedDrumPattern].triggeredKicks[activeStep]) {
+      selectedSampler.triggerAttackRelease('C1', 0.5);
     }
-    if (state.triggeredSnares[state.activeStep]) {
-      state.selectedSampler.triggerAttackRelease('D1', 0.5);
+    if (drumPatterns[selectedDrumPattern].triggeredSnares[activeStep]) {
+      selectedSampler.triggerAttackRelease('D1', 0.5);
     }
-    if (state.triggeredHiHats[state.activeStep]) {
-      state.selectedSampler.triggerAttackRelease('E1', 0.5);
+    if (drumPatterns[selectedDrumPattern].triggeredHiHats[activeStep]) {
+      selectedSampler.triggerAttackRelease('E1', 0.5);
     }
-    if (state.triggeredOpenHiHats[state.activeStep]) {
-      state.selectedSampler.triggerAttackRelease('F1', 0.5);
+    if (drumPatterns[selectedDrumPattern].triggeredOpenHiHats[activeStep]) {
+      selectedSampler.triggerAttackRelease('F1', 0.5);
     }
-    if (state.triggeredToms[state.activeStep]) {
-      state.selectedSampler.triggerAttackRelease('G1', 0.5);
+    if (drumPatterns[selectedDrumPattern].triggeredToms[activeStep]) {
+      selectedSampler.triggerAttackRelease('G1', 0.5);
     }
-  }, [state.activeStep]);
+  }, [activeStep]);
 
   return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };

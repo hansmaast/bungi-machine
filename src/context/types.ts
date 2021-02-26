@@ -2,28 +2,32 @@ import { Dispatch } from 'react';
 import { Sampler } from 'tone';
 
 export type DrumType = 'KICK' | 'SNARE' | 'HIHAT' | 'HIHAT_OPEN' | 'TOM';
-export type DrumPattern = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
+export type DrumPattern = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 export interface TriggeredSteps {[key:string]: string | boolean}
 export type TriggeredStepsObject = {
-  [index: string]: TriggeredSteps;
-};
+  triggeredKicks: TriggeredSteps,
+ triggeredSnares: TriggeredSteps,
+ triggeredHiHats: TriggeredSteps,
+ triggeredOpenHiHats: TriggeredSteps,
+ triggeredToms: TriggeredSteps
+}
 
 export type IGlobalState = {
-    tempo: number;
     masterVolume: number;
-    selectedDrumSound: DrumType;
-    selectedDrumPattern: DrumPattern;
-    selectedSampler: Sampler;
-    note: string;
+    tempo: number;
     isLooping: boolean;
     loopEnd: string;
     steps: string[];
     activeStep: string;
-    triggeredKicks: TriggeredSteps;
-    triggeredSnares: TriggeredSteps;
-    triggeredHiHats: TriggeredSteps;
-    triggeredOpenHiHats: TriggeredSteps;
-    triggeredToms: TriggeredSteps;
+    selectedSampler: Sampler;
+    selectedDrumSound: DrumType;
+    selectedDrumPattern: DrumPattern;
+    drumPatterns: TriggeredStepsObject[];
+    // triggeredKicks: TriggeredSteps;
+    // triggeredSnares: TriggeredSteps;
+    // triggeredHiHats: TriggeredSteps;
+    // triggeredOpenHiHats: TriggeredSteps;
+    // triggeredToms: TriggeredSteps;
     releaseInSeconds: number;
 }
 

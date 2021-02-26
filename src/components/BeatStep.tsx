@@ -7,9 +7,13 @@ import { GridItem } from '../style/gridItem';
 export default function BeatStep({ step }: {step: string}) {
   const { state, dispatch } = useGlobalState();
   const {
-    activeStep, selectedDrumSound, triggeredKicks, triggeredSnares,
-    triggeredHiHats, triggeredOpenHiHats, triggeredToms,
+    activeStep, selectedDrumSound,
+    drumPatterns, selectedDrumPattern,
   } = state;
+  const {
+    triggeredKicks, triggeredSnares,
+    triggeredHiHats, triggeredOpenHiHats, triggeredToms,
+  } = drumPatterns[selectedDrumPattern];
 
   let triggeredSteps: TriggeredSteps;
   let action: Action;
