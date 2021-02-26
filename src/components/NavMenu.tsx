@@ -16,7 +16,7 @@ export function NavMenu() {
       </MenuButton>
       <MenuContainer isOpen={showMenu} bg="white" justifyContent="center">
         <StyledLink to="/rythm" onClick={toggleMenu}>Drum Seq</StyledLink>
-        <StyledLink to="/grid-goon" onClick={toggleMenu}>Grid Goon</StyledLink>
+        {/* <StyledLink to="/grid-goon" onClick={toggleMenu}>Grid Goon</StyledLink> */}
       </MenuContainer>
     </>
   );

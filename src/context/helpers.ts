@@ -1,6 +1,6 @@
-import { DrumType, TriggeredStepsObject } from './types';
+import { DrumType } from './types';
 
-export function getClearedDrumPattern(selectedDrumSound: DrumType): TriggeredStepsObject {
+export function getClearedDrumPattern(selectedDrumSound: DrumType): { [index:string] : {}} {
   switch (selectedDrumSound) {
     case 'KICK':
       return { triggeredKicks: {} };
@@ -13,6 +13,6 @@ export function getClearedDrumPattern(selectedDrumSound: DrumType): TriggeredSte
     case 'TOM':
       return { triggeredToms: {} };
     default:
-      return {};
+      return { triggeredKicks: {} };
   }
 }

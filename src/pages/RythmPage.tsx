@@ -20,7 +20,7 @@ export default function RythmPage() {
         <Button marginY={0} onClick={() => startRhythm(dispatch)}>
           {Transport.state !== 'started' ? 'Play' : 'Pause'}
         </Button>
-        <Button marginY={0} onClick={() => console.log('Loop pattern pressed!')}>♾</Button>
+        <Button marginY={0} onClick={() => {}}>♾</Button>
       </Flex>
       <SelectDrumSound />
       <SelectDrumPattern />
