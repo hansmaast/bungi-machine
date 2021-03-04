@@ -1,6 +1,7 @@
+/* eslint-disable no-case-declarations */
+/* eslint-disable no-param-reassign */
 import { persistInLocalStorage, retrieveFromLocalStorage } from '../utils';
-import { clearedPatterns } from './GlobalState';
-import { getClearedDrumPattern } from './helpers';
+import { getClearedDrumPatterns, getClearedPatternsForDrumType, getUpdatedDrumPatterns } from './helpers';
 import { Action, IGlobalState } from './types';
 
 export const reducer = (state: IGlobalState, action: Action): IGlobalState => {
@@ -18,43 +19,29 @@ export const reducer = (state: IGlobalState, action: Action): IGlobalState => {
     case 'SET_ACTIVE_STEP':
       return { ...state, activeStep: action.payload };
     case 'SET_TRIGGERED_KICKS':
-      // eslint-disable-next-line no-case-declarations
-      const newDrumPatternsKick = [...state.drumPatterns];
-      newDrumPatternsKick[state.selectedDrumPattern].triggeredKicks = action.payload;
-      return { ...state, drumPatterns: newDrumPatternsKick };
+      return { ...state, drumPatterns: getUpdatedDrumPatterns(state, action.payload) };
     case 'SET_TRIGGERED_SNARES':
-      // eslint-disable-next-line no-case-declarations
-      const newDrumPatternsSnare = [...state.drumPatterns];
-      newDrumPatternsSnare[state.selectedDrumPattern].triggeredSnares = action.payload;
-      return { ...state, drumPatterns: newDrumPatternsSnare };
+      return { ...state, drumPatterns: getUpdatedDrumPatterns(state, action.payload) };
     case 'SET_TRIGGERED_HIHATS':
-      // eslint-disable-next-line no-case-declarations
-      const newDrumPatternsHiHats = [...state.drumPatterns];
-      newDrumPatternsHiHats[state.selectedDrumPattern].triggeredHiHats = action.payload;
-      return { ...state, drumPatterns: newDrumPatternsHiHats };
+      return { ...state, drumPatterns: getUpdatedDrumPatterns(state, action.payload) };
     case 'SET_TRIGGERED_OPEN_HIHATS':
-      // eslint-disable-next-line no-case-declarations
-      const newDrumPatternsOpenHiHats = [...state.drumPatterns];
-      newDrumPatternsOpenHiHats[state.selectedDrumPattern].triggeredOpenHiHats = action.payload;
-      return { ...state, drumPatterns: newDrumPatternsOpenHiHats };
+      return { ...state, drumPatterns: getUpdatedDrumPatterns(state, action.payload) };
     case 'SET_TRIGGERED_TOMS':
-      // eslint-disable-next-line no-case-declarations
-      const newDrumPatternsToms = [...state.drumPatterns];
-      newDrumPatternsToms[state.selectedDrumPattern].triggeredToms = action.payload;
-      return { ...state, drumPatterns: newDrumPatternsToms };
+      return { ...state, drumPatterns: getUpdatedDrumPatterns(state, action.payload) };
     case 'CLEAR_ALL':
-      return { ...state, drumPatterns: clearedPatterns };
+      return { ...state, drumPatterns: getClearedDrumPatterns(state.drumPatterns) };
     case 'CLEAR_PATTERN':
-      return { ...state, ...getClearedDrumPattern(action.payload) };
+      return { ...state, drumPatterns: getClearedPatternsForDrumType(state, action.payload) };
     case 'SAVE_PATTERN':
       persistInLocalStorage(action.payload, { ...state, selectedSampler: null });
       return state;
     case 'LOAD_PATTERN':
-      // eslint-disable-next-line no-case-declarations
-      const savedState: IGlobalState = retrieveFromLocalStorage(action.payload);
       // could not store selectedSampler as string,
       // so we set it to the current states sampler.
-      return { ...savedState, selectedSampler: state.selectedSampler };
+      return {
+        ...retrieveFromLocalStorage(action.payload),
+        selectedSampler: state.selectedSampler,
+      };
     default:
       return state;
   }
