@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/bungi-machine/static/js/main.f271e526.chunk.js",
-    "main.js.map": "/bungi-machine/static/js/main.f271e526.chunk.js.map",
-    "runtime-main.js": "/bungi-machine/static/js/runtime-main.dcb1763d.js",
-    "runtime-main.js.map": "/bungi-machine/static/js/runtime-main.dcb1763d.js.map",
-    "static/js/2.52c04c50.chunk.js": "/bungi-machine/static/js/2.52c04c50.chunk.js",
-    "static/js/2.52c04c50.chunk.js.map": "/bungi-machine/static/js/2.52c04c50.chunk.js.map",
-    "static/js/3.d2505c83.chunk.js": "/bungi-machine/static/js/3.d2505c83.chunk.js",
-    "static/js/3.d2505c83.chunk.js.map": "/bungi-machine/static/js/3.d2505c83.chunk.js.map",
+    "main.js": "/bungi-machine/static/js/main.61ee8052.chunk.js",
+    "main.js.map": "/bungi-machine/static/js/main.61ee8052.chunk.js.map",
+    "runtime-main.js": "/bungi-machine/static/js/runtime-main.bc0415ad.js",
+    "runtime-main.js.map": "/bungi-machine/static/js/runtime-main.bc0415ad.js.map",
+    "static/js/2.1c235ce7.chunk.js": "/bungi-machine/static/js/2.1c235ce7.chunk.js",
+    "static/js/2.1c235ce7.chunk.js.map": "/bungi-machine/static/js/2.1c235ce7.chunk.js.map",
+    "static/js/3.6add1762.chunk.js": "/bungi-machine/static/js/3.6add1762.chunk.js",
+    "static/js/3.6add1762.chunk.js.map": "/bungi-machine/static/js/3.6add1762.chunk.js.map",
     "index.html": "/bungi-machine/index.html",
     "service-worker.js": "/bungi-machine/service-worker.js",
     "service-worker.js.map": "/bungi-machine/service-worker.js.map",
-    "static/js/2.52c04c50.chunk.js.LICENSE.txt": "/bungi-machine/static/js/2.52c04c50.chunk.js.LICENSE.txt",
+    "static/js/2.1c235ce7.chunk.js.LICENSE.txt": "/bungi-machine/static/js/2.1c235ce7.chunk.js.LICENSE.txt",
     "static/media/hihat.0dbc2e7a.mp3": "/bungi-machine/static/media/hihat.0dbc2e7a.mp3",
     "static/media/hihat.64dc5aa4.wav": "/bungi-machine/static/media/hihat.64dc5aa4.wav",
     "static/media/hihatOpen.643cdeb7.wav": "/bungi-machine/static/media/hihatOpen.643cdeb7.wav",
@@ -24,8 +24,8 @@
     "static/media/tom2.95a22fde.mp3": "/bungi-machine/static/media/tom2.95a22fde.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.dcb1763d.js",
-    "static/js/2.52c04c50.chunk.js",
-    "static/js/main.f271e526.chunk.js"
+    "static/js/runtime-main.bc0415ad.js",
+    "static/js/2.1c235ce7.chunk.js",
+    "static/js/main.61ee8052.chunk.js"
   ]
 }
