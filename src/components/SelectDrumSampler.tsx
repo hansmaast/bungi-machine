@@ -23,10 +23,10 @@ export function SelectDrumSampler() {
         Select sampler
       </Title>
       <Flex flexDirection="row">
-        <Button isActive={selectedSampler.name === 'TR808'} onClick={() => handleSelection(TR808)}>
+        <Button isSelected={selectedSampler.name === 'TR808'} onClick={() => handleSelection(TR808)}>
           TR808
         </Button>
-        <Button isActive={state.selectedSampler.name !== 'CR78'} onClick={() => handleSelection(CR78)}>
+        <Button isSelected={state.selectedSampler.name === 'CR78'} onClick={() => handleSelection(CR78)}>
           CR78
         </Button>
       </Flex>
