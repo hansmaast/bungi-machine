@@ -21,13 +21,10 @@ export type IGlobalState = {
     activeStep: string;
     selectedSampler: Sampler;
     selectedDrumSound: DrumType;
+    activeLoopPatterns: DrumPattern[];
+    loopPatterns: boolean;
     selectedDrumPattern: DrumPattern;
     drumPatterns: TriggeredStepsObject[];
-    // triggeredKicks: TriggeredSteps;
-    // triggeredSnares: TriggeredSteps;
-    // triggeredHiHats: TriggeredSteps;
-    // triggeredOpenHiHats: TriggeredSteps;
-    // triggeredToms: TriggeredSteps;
     releaseInSeconds: number;
 }
 
@@ -46,7 +43,9 @@ export type Action =
 | { type: 'CLEAR_ALL'; payload: null; }
 | { type: 'CLEAR_PATTERN'; payload: DrumType; }
 | { type: 'SAVE_PATTERN'; payload: string; }
-| { type: 'LOAD_PATTERN'; payload: string; };
+| { type: 'LOAD_PATTERN'; payload: string; }
+| { type: 'TOGGLE_LOOP_SELECTED_PATTERN'; payload: DrumPattern}
+| { type: 'TOGGLE_LOOP_PATTERNS';};
 
 export type Context = {
     state: IGlobalState;

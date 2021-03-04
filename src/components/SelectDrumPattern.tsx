@@ -8,20 +8,28 @@ export function SelectDrumPattern() {
 
   const handleSelection = (pattern: DrumPattern) => {
     dispatch({ type: 'SELECT_DRUM_PATTERN', payload: pattern });
+    if (state.selectedDrumPattern === pattern) {
+      dispatch({ type: 'TOGGLE_LOOP_SELECTED_PATTERN', payload: pattern });
+    }
   };
 
-  const isActive = (pattern: DrumPattern) => pattern === state.selectedDrumPattern;
+  const isSelected = (pattern: DrumPattern) => pattern === state.selectedDrumPattern;
+  const isSelectedLoop = (pattern: DrumPattern) => state.activeLoopPatterns.includes(pattern)
+    && state.loopPatterns;
 
+  const drumPatterns: DrumPattern[] = [0, 1, 2, 3, 4, 5, 6, 7];
   return (
     <Grid gridTemplateColumns={['repeat(4, 1fr)', 'repeat(8, 1fr)']} gridTemplateRows="1fr" gridGap="0">
-      <Button isSelected={isActive(0)} onClick={() => handleSelection(0)}>1</Button>
-      <Button isSelected={isActive(1)} onClick={() => handleSelection(1)}>2</Button>
-      <Button isSelected={isActive(2)} onClick={() => handleSelection(2)}>3</Button>
-      <Button isSelected={isActive(3)} onClick={() => handleSelection(3)}>4</Button>
-      <Button isSelected={isActive(4)} onClick={() => handleSelection(4)}>5</Button>
-      <Button isSelected={isActive(5)} onClick={() => handleSelection(5)}>6</Button>
-      <Button isSelected={isActive(6)} onClick={() => handleSelection(6)}>7</Button>
-      <Button isSelected={isActive(7)} onClick={() => handleSelection(7)}>8</Button>
+      {drumPatterns.map((pattern) => (
+        <Button
+          key={pattern}
+          isSelectedLoop={isSelectedLoop(pattern)}
+          isSelected={isSelected(pattern)}
+          onClick={() => handleSelection(pattern)}
+        >
+          {pattern + 1}
+        </Button>
+      ))}
     </Grid>
   );
 }

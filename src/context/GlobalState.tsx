@@ -38,6 +38,8 @@ const initialState: IGlobalState = {
   selectedSampler: SAMPLERS.CR78,
   selectedDrumSound: 'KICK',
   selectedDrumPattern: 0,
+  activeLoopPatterns: [0, 1, 2, 3],
+  loopPatterns: true,
   drumPatterns: clearedPatterns,
   releaseInSeconds: 0.03,
 };

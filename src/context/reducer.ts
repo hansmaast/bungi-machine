@@ -2,7 +2,7 @@
 /* eslint-disable no-param-reassign */
 import { persistInLocalStorage, retrieveFromLocalStorage } from '../utils';
 import { getClearedDrumPatterns, getClearedPatternsForDrumType, getUpdatedDrumPatterns } from './helpers';
-import { Action, IGlobalState } from './types';
+import { Action, DrumPattern, IGlobalState } from './types';
 
 export const reducer = (state: IGlobalState, action: Action): IGlobalState => {
   switch (action.type) {
@@ -28,6 +28,18 @@ export const reducer = (state: IGlobalState, action: Action): IGlobalState => {
       return { ...state, drumPatterns: getUpdatedDrumPatterns(state, action.payload) };
     case 'SET_TRIGGERED_TOMS':
       return { ...state, drumPatterns: getUpdatedDrumPatterns(state, action.payload) };
+    case 'TOGGLE_LOOP_PATTERNS':
+      return { ...state, loopPatterns: !state.loopPatterns };
+    case 'TOGGLE_LOOP_SELECTED_PATTERN':
+      const index = state.activeLoopPatterns.indexOf(action.payload);
+      let activeLoopPatterns: DrumPattern[];
+      if (index === -1) {
+        activeLoopPatterns = [...state.activeLoopPatterns, action.payload];
+      } else {
+        activeLoopPatterns = [...state.activeLoopPatterns];
+        activeLoopPatterns.splice(index, 1);
+      }
+      return { ...state, activeLoopPatterns };
     case 'CLEAR_ALL':
       return { ...state, drumPatterns: getClearedDrumPatterns(state.drumPatterns) };
     case 'CLEAR_PATTERN':
@@ -36,8 +48,6 @@ export const reducer = (state: IGlobalState, action: Action): IGlobalState => {
       persistInLocalStorage(action.payload, { ...state, selectedSampler: null });
       return state;
     case 'LOAD_PATTERN':
-      // could not store selectedSampler as string,
-      // so we set it to the current states sampler.
       return {
         ...retrieveFromLocalStorage(action.payload),
         selectedSampler: state.selectedSampler,
