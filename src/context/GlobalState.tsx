@@ -39,7 +39,7 @@ const initialState: IGlobalState = {
   selectedDrumSound: 'KICK',
   selectedDrumPattern: 0,
   activeLoopPatterns: [0, 1, 2, 3],
-  loopPatterns: true,
+  loopPatterns: false,
   drumPatterns: clearedPatterns,
   releaseInSeconds: 0.03,
 };
